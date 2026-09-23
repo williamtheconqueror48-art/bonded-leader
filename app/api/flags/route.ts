@@ -17,19 +17,21 @@ export async function GET() {
   }
 
   try {
-    const rows = await sql.query(`
-      SELECT f.id,
-             f.donation_id,
-             f.flag_type,
-             f.flag_rule_text,
-             f.computed_value,
-             d.donor_name_raw,
-             d.party_name,
-             d.amount_inr
-      FROM anomaly_flags f
-      JOIN donations d ON d.id = f.donation_id
-      ORDER BY f.id ASC
-    `);
+    const rows = await sql.query(
+      `SELECT f.id,
+              f.donation_id,
+              f.flag_type,
+              f.flag_rule_text,
+              f.computed_value,
+              d.donor_name_raw,
+              d.party_name,
+              d.amount_inr
+       FROM anomaly_flags f
+       JOIN donations d ON d.id = f.donation_id
+       WHERE f.id >= $1
+       ORDER BY f.id ASC`,
+      [1]
+    );
     return Response.json({ flags: rows });
   } catch (err) {
     console.error("GET /api/flags failed:", (err as Error).message);

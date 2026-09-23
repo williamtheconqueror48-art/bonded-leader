@@ -70,7 +70,10 @@ export async function GET(req: NextRequest) {
            WHERE d.donor_name_raw ILIKE $1 OR d.party_name ILIKE $1`,
           [pattern]
         )
-      : await sql.query(`SELECT COUNT(*)::int AS total FROM donations`);
+      : await sql.query(
+          `SELECT COUNT(*)::int AS total FROM donations WHERE $1::int = 1`,
+          [1]
+        );
 
     const total = totalRows[0]?.total ?? 0;
 

@@ -16,11 +16,13 @@ export async function GET() {
   }
 
   try {
-    const rows = await sql.query(`
-      SELECT id, source_name, source_url, retrieved_at, sha256, row_count
-      FROM ingestion_ledger
-      ORDER BY id ASC
-    `);
+    const rows = await sql.query(
+      `SELECT id, source_name, source_url, retrieved_at, sha256, row_count
+       FROM ingestion_ledger
+       WHERE id >= $1
+       ORDER BY id ASC`,
+      [1]
+    );
     return Response.json({ batches: rows });
   } catch (err) {
     console.error("GET /api/ledger failed:", (err as Error).message);

@@ -299,7 +299,9 @@ export default function HomeClient() {
         </div>
         <nav className="bl-nav">
           <Link href="/">GRAPH</Link>
-          <Link href="/">TABLE</Link>
+          <Link href="/corporate">CORPORATE</Link>
+          <Link href="/donor-party">DONOR→PARTY</Link>
+          <Link href="/benefits">BENEFITS</Link>
           <Link href="/methodology">METHODOLOGY</Link>
         </nav>
       </header>

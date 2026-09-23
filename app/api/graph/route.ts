@@ -29,18 +29,20 @@ export async function GET() {
   }
 
   try {
-    const donations = (await sql.query(`
-      SELECT d.id,
-             d.donor_name_raw,
-             d.donor_name_canonical,
-             d.party_name,
-             d.amount_inr,
-             EXISTS(SELECT 1 FROM anomaly_flags f
-                    WHERE f.donation_id = d.id AND f.flag_type = 'strict_combined') AS has_strict,
-             EXISTS(SELECT 1 FROM anomaly_flags f
-                    WHERE f.donation_id = d.id AND f.flag_type <> 'strict_combined') AS has_amber
-      FROM donations d
-    `)) as Array<{
+    const donations = (await sql.query(
+      `SELECT d.id,
+              d.donor_name_raw,
+              d.donor_name_canonical,
+              d.party_name,
+              d.amount_inr,
+              EXISTS(SELECT 1 FROM anomaly_flags f
+                     WHERE f.donation_id = d.id AND f.flag_type = 'strict_combined') AS has_strict,
+              EXISTS(SELECT 1 FROM anomaly_flags f
+                     WHERE f.donation_id = d.id AND f.flag_type <> 'strict_combined') AS has_amber
+       FROM donations d
+       WHERE d.id >= $1`,
+      [1]
+    )) as Array<{
       id: number;
       donor_name_raw: string;
       donor_name_canonical: string | null;

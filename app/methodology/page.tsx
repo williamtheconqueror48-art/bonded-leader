@@ -22,7 +22,9 @@ export default function Methodology() {
         </div>
         <nav className="bl-nav">
           <Link href="/">GRAPH</Link>
-          <Link href="/">TABLE</Link>
+          <Link href="/corporate">CORPORATE</Link>
+          <Link href="/donor-party">DONOR→PARTY</Link>
+          <Link href="/benefits">BENEFITS</Link>
           <Link href="/methodology">METHODOLOGY</Link>
         </nav>
       </header>
@@ -224,6 +226,80 @@ export default function Methodology() {
           merged. Every pairwise decision with its exact score, the review
           flags, and the correction record are published in
           data/merge_decisions_sbi.json.
+        </p>
+
+        <h2>9. CORPORATE 99% SET — DERIVATION</h2>
+        <p className="bl-p">
+          The <Link href="/corporate">CORPORATE</Link> view answers a
+          prioritisation question: which purchasers account for 99% of
+          corporate bond value, so that company-registry work can start where
+          the money is? The derivation is mechanical and published as
+          data/corporate_99pct.csv with a .provenance.json sidecar:
+        </p>
+        <p className="bl-p">
+          <strong>Step 1 — group.</strong> All 18,871 SBI purchase rows are
+          grouped by verbatim purchaser_name (no Jaro-Winkler merging, so
+          spelling variants of one company are listed separately and nothing
+          is attributed across names).
+        </p>
+        <p className="bl-p">
+          <strong>Step 2 — corporate flag (disclosed heuristic).</strong> A
+          purchaser counts as corporate if its uppercased name, with
+          non-letters stripped, contains any of LTD, LIMITED, PVT, PRIVATE,
+          LLP, LLC — or contains as a whole word any of COMPANY,
+          CORPORATION, ENTERPRISES, TRUST, HOSPITAL, LABORATORIES,
+          INFRASTRUCTURE(S), INFRATECH, ENERGY, POWER, STEEL, CEMENT,
+          CONSTRUCTION, TRADING, SERVICES, SOLUTIONS, INDUSTRIES, MINING,
+          PHARMA, HOTEL, GAMING, ENGINEERING, FOODS, FOODPARK, DEVELOPERS,
+          TECHNOLOGY, CHEMICALS, TEXTILES — or ends in a truncated
+          &ldquo; PR&rdquo; (e.g. FUTURE GAMING AND HOTEL SERVICES PR). Result:
+          851 corporate purchasers, Rs 11,456.42 cr (94.2% of the Rs
+          12,155.51 cr purchased).
+        </p>
+        <p className="bl-p">
+          <strong>Step 3 — cumulative cut.</strong> Corporate purchasers are
+          sorted by total amount descending; the cumulative sum is cut the
+          moment it reaches 99% of the corporate total. Result:{" "}
+          <strong>618 purchasers</strong> covering Rs 11,341.89 cr. For
+          reference: the top 50 cover 62.7%, top 100 cover 74.2%, top 200
+          cover 85.7%.
+        </p>
+        <p className="bl-p">
+          <strong>Limitations.</strong> The corporate flag is a heuristic;
+          borderline names may be misclassified in either direction, and the
+          rule hit is shown per row so it can be audited. The 130 expired
+          (never-encashed) purchase bonds are included in these purchase-side
+          totals; the linked donation totals in /donor-party exclude them.
+        </p>
+
+        <h2>10. DONOR→PARTY MAPPING</h2>
+        <p className="bl-p">
+          The <Link href="/donor-party">DONOR→PARTY</Link> view aggregates the
+          batch-4 join (section 8) to one row per (purchaser, party) pair:
+          total rupees and bond count the party encashed from that purchaser.
+          Restricted to the 618 corporate purchasers of the 99% set (887
+          pairs; 616 of the 618 donors have at least one linked encashment
+          row — 2 donors&apos; purchases were all expired). The full
+          18,741-row bond-level join remains in data/joined_bonds.csv. This
+          mapping records encashment as published; it asserts no motive.
+        </p>
+
+        <h2>11. BENEFIT-SIDE DATA — WHAT IT IS AND IS NOT</h2>
+        <p className="bl-p">
+          The <Link href="/benefits">BENEFITS</Link> view places three kinds
+          of independent public records next to the donation data for the top
+          corporate donors: (a) published company financials
+          (revenue/profit by financial year), (b) government tender and
+          contract awards, (c) regulatory approvals and licenses. Every
+          figure carries its source URL; anything not found in a searched
+          public source is marked NOT AVAILABLE IN SOURCE DATA.
+        </p>
+        <p className="bl-p">
+          <strong>What this does not mean.</strong> A donation dated 2022 and
+          a contract dated 2023 are two facts with two sources. This tool
+          draws no arrow between them — not donation→benefit, not
+          benefit→donation. Co-occurrence on one page is juxtaposition for
+          the reader&apos;s own research, not a finding.
         </p>
       </main>
 
