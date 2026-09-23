@@ -1,0 +1,30 @@
+{
+  "file": "data/raw/mirror_final_paired.csv",
+  "provenance_class": "third-party donor-recipient PAIRED derivative joined on bond code",
+  "is_official_eci_file": false,
+  "official_source_note": "eci.gov.in blocks this project's network (HTTP 406 bot wall); the official ECI PDFs could not be fetched directly. This is a community-held copy, NOT the official ECI file.",
+  "source_url_verbatim": "https://raw.githubusercontent.com/saisantoshv3/electoral_bonds/main/data/final.csv",
+  "publisher": "saisantoshv3 (GitHub community derivative)",
+  "publisher_repo": "https://github.com/saisantoshv3/electoral_bonds",
+  "publisher_claimed_origin": "ECI-published SBI electoral-bond data (March 2024)",
+  "retrieved_at": "2026-09-23",
+  "sha256": "192489338f5cfb70df17566776db936ccd7ce3e732fb7dc7cb6d87faca8d62e6",
+  "file_size_bytes": 3239335,
+  "bond_numbers_present": true,
+  "column_headers": [
+    "date_of_encashment",
+    "political_party_name",
+    "prefix",
+    "bond_number",
+    "amount",
+    "pay_branch_code",
+    "reference_number_URN",
+    "journam_date",
+    "date_of_purchase",
+    "date_of_expiry",
+    "purchaser_name",
+    "issue_branch_code",
+    "status"
+  ],
+  "row_count_data": 20551
+}

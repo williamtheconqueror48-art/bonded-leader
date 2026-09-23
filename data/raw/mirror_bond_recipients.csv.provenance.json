@@ -1,0 +1,26 @@
+{
+  "file": "data/raw/mirror_bond_recipients.csv",
+  "provenance_class": "third-party CSV transcription of ECI-published SBI redemption data",
+  "is_official_eci_file": false,
+  "official_source_note": "eci.gov.in blocks this project's network (HTTP 406 bot wall); the official ECI PDFs could not be fetched directly. This is a community-held copy, NOT the official ECI file.",
+  "source_url_verbatim": "https://raw.githubusercontent.com/inder-preet-kakkar/bond_analytics_repo/main/data/bond_recipients.csv",
+  "publisher": "inder-preet-kakkar (GitHub community derivative)",
+  "publisher_repo": "https://github.com/inder-preet-kakkar/bond_analytics_repo",
+  "publisher_claimed_origin": "ECI-published SBI electoral-bond data (March 2024)",
+  "retrieved_at": "2026-09-23",
+  "sha256": "c79217e7144d5e9521e0dbfe0a8c350330b078558f91e960a525181f505f5f0a",
+  "file_size_bytes": 1913248,
+  "bond_numbers_present": true,
+  "column_headers": [
+    "Sr No.",
+    "Date of Encashment",
+    "Name of the Political Party",
+    "Account no. of Political Party",
+    "Prefix",
+    "Bond Number",
+    "Denominations",
+    "Pay Branch Code",
+    "Pay Teller"
+  ],
+  "row_count_data": 20421
+}
