@@ -158,6 +158,70 @@ export default function Methodology() {
           honestly, not hidden.
         </p>
         <LedgerBatches />
+
+        <h2>8. BOND-LEVEL BATCHES (2–4) — JOIN METHODOLOGY</h2>
+        <p className="bl-p">
+          Batch #2: <strong>SBI purchase list (bond buyer)</strong> — 18,871
+          rows, one per bond: purchaser name, prefix, bond number,
+          denomination, purchase/expiry dates, issue branch. Batch #3:{" "}
+          <strong>SBI redemption list (bond user)</strong> — 20,421 rows, one
+          per encashment: political party, prefix, bond number, denomination,
+          encashment date, pay branch. Both are community mirrors of the
+          ECI-published SBI 21 March 2024 dump (eci.gov.in blocks this
+          project&apos;s network; the official files could not be fetched
+          directly — see the provenance sidecars in data/raw/). Batch #4 is
+          the derived join: <strong>18,741 donation rows</strong> with real
+          donor→party→amount→date linkage.
+        </p>
+        <p className="bl-p">
+          <strong>Join rule (mechanical).</strong> Inner join on the composite
+          key (prefix, bond number). The prefix encodes the denomination
+          series — OC = ₹1,00,00,000; TL = ₹10,00,000; TT = ₹10,000; OL =
+          ₹1,00,000; OT = ₹1,000 — so a bare bond number is not unique across
+          prefixes and is never joined alone. Result:{" "}
+          <strong>18,741 matched</strong>; 130 purchase-only rows (every one
+          carries Status = Expired, i.e. purchased but never encashed);
+          1,680 redemption-only rows (no purchase record for that
+          prefix+bond number in the purchase file, concentrated in the April
+          2019 first tranche — including all 38 redemptions crediting ALL
+          INDIA ANNA DRAVIDA MUNNETRA KAZHAGAM). 815 redemption-only rows
+          share a bond number with a purchase row under a <em>different</em>{" "}
+          prefix, but in zero of those cases does the denomination also
+          match — they are mechanically distinct bonds and are correctly left
+          unmatched. Denomination mismatches inside the join: 0.
+        </p>
+        <p className="bl-p">
+          <strong>Totals cross-check.</strong> Purchase file: ₹12,155.5132
+          crore. Redemption file: ₹12,769.0893 crore, matching the
+          independently corroborated encashment total of ₹12,769.09 crore.
+          Joined rows: ₹12,145.8783 crore (the difference to the purchase
+          total is the 130 expired bonds).
+        </p>
+        <p className="bl-p">
+          <strong>No double counting.</strong> Batch #1 (50 donor-aggregate
+          rows) and batch #4 (18,741 bond-level rows) overlap in coverage —
+          the same donor&apos;s bonds appear in both. Never sum amounts
+          across batches. Batch #1 rows are per-donor aggregates with no
+          party linkage; batch #4 rows are individual bonds with party
+          linkage. They are stored under separate ledger ids and the
+          interface keeps them distinguishable.
+        </p>
+        <p className="bl-p">
+          <strong>Entity-resolution review.</strong> The Jaro-Winkler merge
+          (≥ 0.90, blocking on the first 4 alphanumeric characters, 822
+          within-block comparisons over 1,297 distinct purchaser names)
+          produced 103 merged components covering 6,434 rows. On manual
+          review, 26 of those components were flagged as potentially
+          conflating distinct entities — different companies sharing a name
+          stem (e.g. BHARTI AIRTEL LIMITED vs BHARTI INFRATEL LIMITED;
+          WELSPUN INDIA LIMITED vs WELSPUN LIVING LIMITED; MANKIND PHARMA
+          LIMITED vs MANKIND TRACOM PRIVATE LIMITED), different individuals
+          sharing a first name, and individual-vs-HUF pairs. They remain
+          merged per the disclosed mechanical rule pending adjudication;
+          every pairwise decision with its exact score, plus the review
+          flags, is published in data/merge_decisions_sbi.json. Rows under
+          flagged merges: 724 (₹314.08 crore).
+        </p>
       </main>
 
       <footer className="bl-footer">
