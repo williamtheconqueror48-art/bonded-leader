@@ -226,7 +226,8 @@
     "No downloadable bond-level dataset found from Alt News, NewsLaundry, Reporters' Collective, The Hindu/Data, Scroll.in, or The Quint (searches returned analysis articles only, no data files).",
     "Dataful (dataful.in/datasets/19700) hosts a matched dataset but its page is JS-gated and downloads were not retrievable from here; not obtained.",
     "Wayback Machine: all archived captures of eci.gov.in/disclosure-of-electoral-bonds return 403; no archived ECI bond PDFs located via CDX.",
-    "Nothing in this section has been ingested into Neon. Ingestion requires a separate verified pass."
+    "Nothing in this section has been ingested into Neon. Ingestion requires a separate verified pass.",
+    "2026-09-23: the two SBI PDFs above (sbi_purchase_bond_buyer.pdf, sbi_redemption_bond_user.pdf) were mechanically parsed (scripts/parse_sbi.py: 18,871 / 20,421 rows) and ingested as Neon ingestion_ledger rows 2 (purchase), 3 (redemption) and 4 (bond-number join, 18,741 rows) via scripts/ingest_sbi.py. Their provenance_class remains 'community mirror, NOT the official ECI file'."
   ],
   "files": [
     {
