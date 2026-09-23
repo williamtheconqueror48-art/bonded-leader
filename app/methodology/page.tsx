@@ -216,11 +216,14 @@ export default function Methodology() {
           stem (e.g. BHARTI AIRTEL LIMITED vs BHARTI INFRATEL LIMITED;
           WELSPUN INDIA LIMITED vs WELSPUN LIVING LIMITED; MANKIND PHARMA
           LIMITED vs MANKIND TRACOM PRIVATE LIMITED), different individuals
-          sharing a first name, and individual-vs-HUF pairs. They remain
-          merged per the disclosed mechanical rule pending adjudication;
-          every pairwise decision with its exact score, plus the review
-          flags, is published in data/merge_decisions_sbi.json. Rows under
-          flagged merges: 724 (₹314.08 crore).
+          sharing a first name, and individual-vs-HUF pairs. On 2026-09-23
+          those 26 components (58 names, 724 rows, ₹314.08 crore) were
+          unmerged: their donor_name_canonical was reset to NULL so the
+          interface shows the verbatim raw names and attributes nothing
+          across distinct legal entities. The remaining 77 components stay
+          merged. Every pairwise decision with its exact score, the review
+          flags, and the correction record are published in
+          data/merge_decisions_sbi.json.
         </p>
       </main>
 
