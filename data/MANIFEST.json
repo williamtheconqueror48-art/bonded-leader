@@ -1,0 +1,42 @@
+{
+  "sources": [
+    {
+      "file": "data/raw/Part_3_Donor-wise_EBs_details_Final.pdf",
+      "source_name": "ADR Part 3: Donor-wise Electoral Bonds details (corporate & individual donors, 12 Apr 2019 - 15 Feb 2024)",
+      "source_url": "http://adrindia.org/sites/default/files/Part_3_Donor-wise_EBs_details_Final.pdf",
+      "retrieved_at": "2026-09-23T07:37:34.839125+00:00",
+      "sha256": "9c530edba30991d08cf026b6e3bfe567ae3aed11b716a76dbceb9a4a4b8fd916",
+      "row_count": 50,
+      "parser": "scripts/parse_adr_part3.py",
+      "donor_types": {
+        "corporate": 25,
+        "individual": 25
+      },
+      "fields_present": [
+        "donor_name_raw",
+        "amount_inr"
+      ],
+      "fields_absent_null": [
+        "party_name",
+        "bond_date"
+      ],
+      "notes": [
+        "Donor names kept verbatim as printed, including the source's own typesetting breaks ('LI MITED', 'PVT L TD', 'LTDPROPRIET').",
+        "Row 8 spans two printed lines; joined with a single space; trailing '*' kept as printed (source footnote: combined entries).",
+        "This source aggregates each donor's total over 12 Apr 2019 - 15 Feb 2024; no per-bond dates and no donor-to-party linkage are printed, so party_name and bond_date are NULL (displayed as NOT AVAILABLE IN SOURCE DATA).",
+        "Source's own inside-PDF citation: 'Election Commission of India as on 14th March 2024. Data Compiled and Analysed by ADR.'"
+      ]
+    }
+  ],
+  "also_downloaded_not_ingested": [
+    {
+      "file": "data/raw/Part_1_Party-wise_EBs_Encashed.pdf",
+      "source_url": "https://adrindia.org/sites/default/files/Part_1_Party-wise_EBs_Encashed.pdf",
+      "sha256": "322de91cae9e8a78e9af0442f160f1ffc2783bea7f2278465ff687d47ea7e1e9",
+      "reason": "Party-wise encashment totals (26 parties); no donor linkage. Reserved for a future party-totals view, not the donations table."
+    }
+  ],
+  "schema_notes": [
+    "Migration applied at ingest: donations.party_name DROP NOT NULL. schema.sql should be updated to declare party_name TEXT (nullable)."
+  ]
+}
