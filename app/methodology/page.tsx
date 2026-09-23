@@ -5,6 +5,7 @@ import {
   RULE_STRICT_COMBINED_6M,
 } from "@/lib/anomaly";
 import { ALL_SOURCES } from "@/lib/sources";
+import LedgerBatches from "./batches";
 
 /**
  * BONDED-LEADER /methodology — plain-language statement of what this tool
@@ -134,6 +135,29 @@ export default function Methodology() {
           DATA rather than estimating. Name-merging is probabilistic and its
           scores are shown so readers can judge each merge themselves.
         </p>
+
+        <h2>7. INGESTED BATCHES — LIVE LEDGER</h2>
+        <p className="bl-p">
+          Batch #1 (the first sealed ingestion): <strong>ADR Part 3 —
+          Donor-wise Electoral Bonds details</strong>, corporate and
+          individual donors, coverage 12 April 2019 to 15 February 2024 —
+          50 rows (25 corporate, 25 individual), compiled by ADR from
+          Election Commission of India data as of 14 March 2024.
+        </p>
+        <p className="bl-p">
+          <strong>What NULL fields mean.</strong> This source publishes
+          per-donor aggregate totals. It does not print per-bond dates and
+          does not link donors to recipient parties, so{" "}
+          <strong>party_name</strong> and <strong>bond_date</strong> are NULL
+          for all 50 rows and display as NOT AVAILABLE IN SOURCE DATA. The
+          graph therefore shows donor nodes with zero edges: an edge is
+          drawn only where a source records real donor→party linkage. No
+          MCA21 company-registry rows have been verified yet, so the
+          incorporation and turnover flags have nothing to compute against
+          and 0 flags are triggered — that empty result is reported
+          honestly, not hidden.
+        </p>
+        <LedgerBatches />
       </main>
 
       <footer className="bl-footer">
