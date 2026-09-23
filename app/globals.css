@@ -1,0 +1,253 @@
+/* BONDED-LEADER — brutalist stylesheet.
+   Black background. White monospace text. 1px hairline borders.
+   No rounded corners. No gradients. No shadows. No illustrations.
+   The data is the decoration. */
+
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --dim: #8a8a8a;
+  --faint: #3a3a3a;
+  --green: #33ff66;
+  --amber: #ffb000;
+  --red: #ff2b2b;
+}
+
+* {
+  box-sizing: border-box;
+  border-radius: 0 !important;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: none;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* ---- hairline box primitives ---- */
+.bl-box {
+  border: 1px solid var(--fg);
+}
+
+.bl-box-dim {
+  border: 1px solid var(--faint);
+}
+
+.bl-rule {
+  border: 0;
+  border-top: 1px solid var(--fg);
+  margin: 0;
+}
+
+.bl-rule-dim {
+  border: 0;
+  border-top: 1px solid var(--faint);
+  margin: 0;
+}
+
+/* ---- header ---- */
+.bl-header {
+  border-bottom: 1px solid var(--fg);
+  padding: 12px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.bl-wordmark {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.bl-nav {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.bl-tagline {
+  color: var(--dim);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* ---- layout ---- */
+.bl-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.bl-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .bl-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.bl-panel {
+  border: 1px solid var(--fg);
+  padding: 0;
+}
+
+.bl-panel-head {
+  border-bottom: 1px solid var(--fg);
+  padding: 8px 12px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bl-panel-body {
+  padding: 16px 12px;
+  min-height: 220px;
+}
+
+/* ---- type ---- */
+.bl-h1 {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.bl-p {
+  margin: 0 0 12px;
+  max-width: 72ch;
+}
+
+.bl-dim {
+  color: var(--dim);
+}
+
+.bl-small {
+  font-size: 12px;
+}
+
+.bl-empty {
+  border: 1px dashed var(--faint);
+  color: var(--dim);
+  padding: 32px 16px;
+  text-align: center;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+/* ---- status colors (node semantics) ---- */
+.bl-green { color: var(--green); }
+.bl-amber { color: var(--amber); }
+.bl-red { color: var(--red); }
+
+.bl-legend {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  padding: 8px 0 0;
+}
+
+.bl-legend i {
+  font-style: normal;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid currentColor;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+/* ---- tables ---- */
+.bl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.bl-table th,
+.bl-table td {
+  border: 1px solid var(--faint);
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.bl-table th {
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  border-color: var(--fg);
+}
+
+/* ---- footer ---- */
+.bl-footer {
+  border-top: 1px solid var(--fg);
+  padding: 16px;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+
+.bl-footer a {
+  color: var(--dim);
+}
+
+/* ---- methodology ---- */
+.bl-method h2 {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--fg);
+  padding-bottom: 6px;
+  margin: 32px 0 12px;
+}
+
+.bl-method h2:first-child {
+  margin-top: 0;
+}
+
+.bl-rule-text {
+  border: 1px solid var(--faint);
+  border-left: 3px solid var(--amber);
+  padding: 10px 12px;
+  margin: 12px 0;
+  font-size: 12.5px;
+}
+
+.bl-rule-text.red {
+  border-left-color: var(--red);
+}
+
+.bl-rule-text .bl-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
