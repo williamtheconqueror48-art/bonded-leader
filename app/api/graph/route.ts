@@ -39,6 +39,7 @@ export async function GET() {
                     WHERE f.donation_id = d.id AND f.flag_type = 'strict_combined') AS has_strict,
              EXISTS(SELECT 1 FROM anomaly_flags f
                     WHERE f.donation_id = d.id AND f.flag_type <> 'strict_combined') AS has_amber
+      FROM donations d
     `)) as Array<{
       id: number;
       donor_name_raw: string;

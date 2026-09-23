@@ -9,7 +9,7 @@
 [![Neon Postgres](https://img.shields.io/badge/Postgres-Neon-00e5a0)](https://neon.tech/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
-**Live demo:** https://bonded-leader-djy6jku8i-largereporter25s-projects.vercel.app
+**Live demo:** https://bonded-leader-largereporter25s-projects.vercel.app
 
 In February 2024 the Supreme Court of India struck down the Electoral Bonds Scheme and ordered full disclosure of donor, party, and amount data. The State Bank of India submitted the data to the Election Commission of India (ECI), which published it. BONDED-LEADER structures those public disclosures — plus ADR/MyNeta compilations and MCA21 company-registry filings — into a searchable graph and table where every record traces to a cited source.
 
@@ -41,7 +41,7 @@ Every ingestion batch is sealed in a public `ingestion_ledger` (source URL, retr
 
 Node colors: green = no flag triggered · amber = at least one mechanical flag · red = strict combined flag only.
 
-Full methodology: [/methodology](https://bonded-leader-djy6jku8i-largereporter25s-projects.vercel.app/methodology)
+Full methodology: [/methodology](https://bonded-leader-largereporter25s-projects.vercel.app/methodology)
 
 ---
 
