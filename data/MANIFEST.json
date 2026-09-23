@@ -227,5 +227,25 @@
     "Dataful (dataful.in/datasets/19700) hosts a matched dataset but its page is JS-gated and downloads were not retrievable from here; not obtained.",
     "Wayback Machine: all archived captures of eci.gov.in/disclosure-of-electoral-bonds return 403; no archived ECI bond PDFs located via CDX.",
     "Nothing in this section has been ingested into Neon. Ingestion requires a separate verified pass."
+  ],
+  "files": [
+    {
+      "file": "eci_sbi_part2_wayback_20250810.pdf",
+      "title": "Details of Electoral Bonds submitted by SBI Part-II",
+      "provenance": "Official ECI file, retrieved via Wayback Machine snapshot 2025-08-10T10:41:09Z (all March 2024 captures of the ECI disclosure page are 403; eci.gov.in blocks direct retrieval from our network)",
+      "source_url": "https://web.archive.org/web/20250810104109id_/https://www.eci.gov.in/eci-backend/public/api/download?url=LMAhAK6sOPBp/NFF0iRfXbEB1EVSLT41NNLRjYNJJP1KivrUxbfqkDatmHy12e/zBiU51zPFZI5qMtjV1qgjFmSC/Sz9GPIId9Zlf4WX9G/yncUhH2YfOjkZLtGsyZ9B56VRYj06iIsFTelbq233Uw==",
+      "eci_disclosure_page_snapshot": "https://web.archive.org/web/20250807185031/https://www.eci.gov.in/disclosure-of-electoral-bonds",
+      "retrieved_at": "2026-09-23",
+      "sha256": "41c9ce6f6991df5543e8d39ca7905169dd9377fc3447d40bd0ca228548e0d7f3",
+      "pages": 426,
+      "parsed_data_rows": 20421,
+      "distinct_parties": 27,
+      "columns": [
+        "Date of Encashment",
+        "Name of the Political Party",
+        "Denomination"
+      ],
+      "note": "Bond-level encashment records (one row per bond). No donor names and no bond numbers in this file version."
+    }
   ]
 }
