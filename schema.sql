@@ -21,7 +21,7 @@ CREATE TABLE donations (
   id SERIAL PRIMARY KEY,
   donor_name_raw TEXT NOT NULL,       -- exact string from source
   donor_name_canonical TEXT,          -- Jaro-Winkler-resolved canonical form
-  party_name TEXT NOT NULL,
+  party_name TEXT,                    -- NULL when the source carries no donor->party linkage
   amount_inr NUMERIC NOT NULL,
   bond_date DATE,
   source_ledger_id INTEGER REFERENCES ingestion_ledger(id)
